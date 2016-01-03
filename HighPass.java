@@ -8,8 +8,7 @@ public class HighPass extends Filter {
         this.cutOff = cutOff;
     }
 
-    @Override
-    public Waveform process(Waveform w) {
-        return w;
+    public Object process(Object w) {
+        return (Waveform) w;
     }
 }

@@ -15,10 +15,10 @@ public class Apply {
         process(new Splitter(), s);
         for (int i = 0; i < 10; i++) {
             if (i < 5) {
-                process(new FilterAdapter(new LowPass(1.0)), new Waveform());
+                process(new LowPass(1.0), new Waveform());
             } else {
-                process(new FilterAdapter(new HighPass(1.0)), new Waveform());
-                process(new FilterAdapter(new BandPass(1.0, 3.4)), new Waveform());
+                process(new HighPass(1.0), new Waveform());
+                process(new BandPass(1.0, 3.4), new Waveform());
             }
         }
     }
