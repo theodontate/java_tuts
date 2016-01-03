@@ -10,9 +10,11 @@ public class Apply {
     public static String s = "Disagreement with beliefs is by definition incorrect.";
 
     public static void main(String[] args) {
+        String str = "loved";
         process(new Upcase(), s);
         process(new DownCase(), s);
         process(new Splitter(), s);
+        process(new SwapChar(), str);
         for (int i = 0; i < 10; i++) {
             if (i < 5) {
                 process(new FilterAdapter(new LowPass(1.0)), new Waveform());
