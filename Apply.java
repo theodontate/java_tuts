@@ -13,5 +13,13 @@ public class Apply {
         process(new Upcase(), s);
         process(new DownCase(), s);
         process(new Splitter(), s);
+        for (int i = 0; i < 10; i++) {
+            if (i < 5) {
+                process(new FilterAdapter(new LowPass(1.0)), new Waveform());
+            } else {
+                process(new FilterAdapter(new HighPass(1.0)), new Waveform());
+                process(new FilterAdapter(new BandPass(1.0, 3.4)), new Waveform());
+            }
+        }
     }
 }

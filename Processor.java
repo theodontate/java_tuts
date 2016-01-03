@@ -1,12 +1,8 @@
 /**
  * Created by theartiste on 1/3/16.
  */
-public class Processor {
-    public String name() {
-        return getClass().getSimpleName();
-    }
+public interface Processor {
+    public String name();
 
-    Object process(Object input) {
-        return input;
-    }
+    public Object process(Object input);
 }
