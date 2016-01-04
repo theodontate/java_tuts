@@ -1,12 +1,10 @@
 /**
  * Created by theartiste on 1/3/16.
  */
-public class Filter {
+public abstract class Filter implements Processor {
     public String name() {
         return getClass().getSimpleName();
     }
 
-    public Waveform process(Waveform input) {
-        return input;
-    }
+    public abstract Object process(Object input);
 }

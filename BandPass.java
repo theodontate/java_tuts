@@ -9,8 +9,7 @@ public class BandPass extends Filter {
         this.LowCutOff = LowCutOff;
     }
 
-    @Override
-    public Waveform process(Waveform w) {
-        return w;
+    public Object process(Object w) {
+        return (Waveform) w;
     }
 }
