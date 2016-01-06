@@ -38,6 +38,29 @@ public class sequence {
         }
     }
 
+    private class reverseSelector implements Selector {
+        private int i = (items.length-1);
+
+        @Override
+        public boolean end() {
+            return i == 0;
+        }
+
+        @Override
+        public Object current() {
+            return items[i];
+        }
+
+        @Override
+        public void next() {
+            if (i > 0) i--;
+        }
+
+        public sequence getSequence() {
+            return sequence.this;
+        }
+    }
+
     public Selector selector() {
         return new sequenceSelector();
     }
@@ -73,15 +96,27 @@ public class sequence {
 
         Selector strSequenceSelector = strSequence.selector();
 
-        while(!strSequenceSelector.end()) {
+        while (!strSequenceSelector.end()) {
             System.out.println(strSequenceSelector.current());
             strSequenceSelector.next();
         }
 
         Selector selector = sequence.selector();
-        while(!selector.end()) {
+        while (!selector.end()) {
             System.out.println(selector.current() + " ");
             selector.next();
+        }
+
+        sequence evenCooler = new sequence(10);
+        for (int i = 0; i < 10; i++) {
+            evenCooler.add(Integer.toString(i));
+        }
+
+
+        Selector ReverseSelector = sequence.new reverseSelector();
+        while(!ReverseSelector.end()) {
+            System.out.println(ReverseSelector.current() + " reversing...");
+            ReverseSelector.next();
         }
 
         System.out.println(sHolder);
