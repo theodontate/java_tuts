@@ -19,8 +19,9 @@ public class Demo {
 
         b.callEmAll();
 
-        b.nullify(aArray[2].makeU());
-        b.nullify(aArray[4].makeU());
+        b.nullify(2);
+        b.nullify(4);
+        System.out.println("After nullification.");
 
         b.callEmAll();
     }

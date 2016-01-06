@@ -13,10 +13,11 @@ public class B {
         uArray[i++] = a;
     }
 
-    public void nullify(U a) {
+    public void nullify(int a) {
         for (int i = 0; i < 10; i++) {
-            if (uArray[i] == a) {
-                ((A) uArray[i]).setDeleted();
+            if (i == a) {
+                 uArray[i].setDeleted();
+                System.out.println("Hit");
             }
         }
     }
@@ -24,11 +25,13 @@ public class B {
     public void callEmAll() {
         int i = 0;
         for (U temp : uArray) {
-            if (!((A) temp).getDelState()) {
+            if (!temp.getDelState()) {
                 System.out.println(i + "th : ");
                 temp.doA();
                 temp.doB();
+                System.out.println("deleted state : " + temp.getDelState());
             }
+            i++;
         }
     }
 

@@ -13,6 +13,7 @@ public class A {
 
     public U makeU() {
         return new U() {
+            boolean isDeleted = false;
 
             public void doA() {
                 System.out.println("Inside doA()");
@@ -20,6 +21,14 @@ public class A {
 
             public void doB() {
                 System.out.println("Inside doB()");
+            }
+
+            public void setDeleted() {
+                isDeleted = true;
+            }
+
+            public boolean getDelState() {
+                return isDeleted;
             }
 
         };
