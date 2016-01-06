@@ -9,14 +9,12 @@ public interface Television {
 
     public void turnOff();
 
-    class Work implements Television {
+    class Work {
 
-        public void turnOn() {
-            System.out.println("Television turning on.");
+        public static void doSomething(Television v) {
+            v.turnOff();
+            v.turnOn();
         }
 
-        public void turnOff() {
-            System.out.println("Television switched off.");
-        }
     }
 }

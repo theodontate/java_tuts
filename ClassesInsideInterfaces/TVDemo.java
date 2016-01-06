@@ -9,9 +9,7 @@ public class TVDemo {
         Sony sony = new Sony();
         sony.turnOff();
         sony.turnOn();
-        Television.Work obj1 = new Television.Work();
-        obj1.turnOff();
-        obj1.turnOn();
+        Television.Work.doSomething(sony);
 
     }
 
