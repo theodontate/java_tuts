@@ -1,18 +1,20 @@
 package InnerClasses;
 
+import java.util.ArrayList;
+
 /**
  * Created by theartiste on 1/4/16.
  */
 public class sequence {
-    private Object[] items;
+    private ArrayList items;
     private int next = 0;
 
     public sequence(int size) {
-        items = new Object[size];
+        items = new ArrayList();
     }
 
     public void add(Object x) {
-        items[next++] = x;
+        items.add(x);
     }
 
     private class sequenceSelector implements Selector {
@@ -20,17 +22,17 @@ public class sequence {
 
         @Override
         public boolean end() {
-            return i == items.length;
+            return i == items.size();
         }
 
         @Override
         public Object current() {
-            return items[i];
+            return items.get(i);
         }
 
         @Override
         public void next() {
-            if (i < items.length) i++;
+            if (i < items.size()) i++;
         }
 
         public sequence getSequence() {
@@ -39,7 +41,7 @@ public class sequence {
     }
 
     private class reverseSelector implements Selector {
-        private int i = (items.length-1);
+        private int i = (items.size() - 1);
 
         @Override
         public boolean end() {
@@ -48,7 +50,7 @@ public class sequence {
 
         @Override
         public Object current() {
-            return items[i];
+            return items.get(i);
         }
 
         @Override
@@ -114,7 +116,7 @@ public class sequence {
 
 
         Selector ReverseSelector = sequence.new reverseSelector();
-        while(!ReverseSelector.end()) {
+        while (!ReverseSelector.end()) {
             System.out.println(ReverseSelector.current() + " reversing...");
             ReverseSelector.next();
         }
