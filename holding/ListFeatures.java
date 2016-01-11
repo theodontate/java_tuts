@@ -32,15 +32,5 @@ public class ListFeatures {
         System.out.println("11 : sub List : " + sub);
         System.out.println("12 : " + Petss.containsAll(sub));
 //        Collections.sort(sub);
-
-
-
-
-
-
-
-
-
-
     }
 }
