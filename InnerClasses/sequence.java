@@ -1,6 +1,8 @@
 package InnerClasses;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 /**
  * Created by theartiste on 1/4/16.
@@ -18,21 +20,17 @@ public class sequence {
     }
 
     private class sequenceSelector implements Selector {
-        private int i = 0;
+        private Iterator it = items.iterator();
+
 
         @Override
-        public boolean end() {
-            return i == items.size();
+        public Object next() {
+            return it.next();
         }
 
         @Override
-        public Object current() {
-            return items.get(i);
-        }
-
-        @Override
-        public void next() {
-            if (i < items.size()) i++;
+        public boolean hasNextValue() {
+            return it.hasNext();
         }
 
         public sequence getSequence() {
@@ -41,21 +39,17 @@ public class sequence {
     }
 
     private class reverseSelector implements Selector {
-        private int i = (items.size() - 1);
+        ListIterator rit = items.listIterator(items.size());
+
 
         @Override
-        public boolean end() {
-            return i == 0;
+        public Object next() {
+            return rit.previous();
         }
 
         @Override
-        public Object current() {
-            return items.get(i);
-        }
-
-        @Override
-        public void next() {
-            if (i > 0) i--;
+        public boolean hasNextValue() {
+            return rit.hasPrevious();
         }
 
         public sequence getSequence() {
@@ -97,30 +91,27 @@ public class sequence {
         }
 
         Selector strSequenceSelector = strSequence.selector();
-
-        while (!strSequenceSelector.end()) {
-            System.out.println(strSequenceSelector.current());
-            strSequenceSelector.next();
+        while (strSequenceSelector.hasNextValue()) {
+            System.out.println(strSequenceSelector.next());
         }
-
         Selector selector = sequence.selector();
-        while (!selector.end()) {
-            System.out.println(selector.current() + " ");
-            selector.next();
+        while (selector.hasNextValue()) {
+            System.out.println(selector.next());
         }
-
         sequence evenCooler = new sequence(10);
         for (int i = 0; i < 10; i++) {
             evenCooler.add(Integer.toString(i));
         }
-
-
         Selector ReverseSelector = sequence.new reverseSelector();
-        while (!ReverseSelector.end()) {
-            System.out.println(ReverseSelector.current() + " reversing...");
-            ReverseSelector.next();
+        while (ReverseSelector.hasNextValue()) {
+            System.out.println(ReverseSelector.next() + " reversing...");
         }
 
+        Selector theReverseSel = evenCooler.new reverseSelector();
+        while (theReverseSel.hasNextValue()) {
+            System.out.println(theReverseSel.next() + " reseting...");
+        }
+//
         System.out.println(sHolder);
     }
 }
