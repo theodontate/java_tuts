@@ -29,5 +29,18 @@ public class Exer25 {
         for (String uniqueWord : map.keySet()) {
             System.out.println(uniqueWord + " : " + map.get(uniqueWord));
         }
+
+        System.out.println("THE FILE IN ITS ENTIRETY : ");
+        System.out.println("----------------------------");
+
+        for (int i = 1; i < 146; i++) {
+            for (String uniqueWord : uniqueWords) {
+                for (Integer locValue : map.get(uniqueWord)) {
+                    if (locValue == i) {
+                        System.out.println(uniqueWord);
+                    }
+                }
+            }
+        }
     }
 }
