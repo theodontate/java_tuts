@@ -54,6 +54,8 @@ public class Exer9 {
                 g();
             } catch (Exception e) {
                 e.printStackTrace(System.out);
+            } finally {
+                System.out.println("Carrots are cooked.");
             }
         }
     }
