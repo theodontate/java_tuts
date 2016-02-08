@@ -29,7 +29,16 @@ abstract class Inning {
     }
 }
 
+class StormException extends Exception {
+}
 
+class RainedOut extends StormException {
+
+}
+
+class PopFoul extends FoulException {
+
+}
 
 public class StormyInning {
 
